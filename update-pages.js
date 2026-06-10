@@ -1019,4 +1019,37 @@ for (var ci = 0; ci < catDefs.length; ci++) {
 fs.writeFileSync(outDir + 'cta.html', themed(renderCtaPage()));
 console.log('cta.html');
 
-console.log('Done. 23 pages generated.');
+// ── viewer.html（catDefsからスライド一覧を自動生成）────────────────────────────
+var slideLines = "  { file: 'cover.html', label: '表紙' },\n  { file: 'howto.html', label: '使い方ガイド' },\n";
+catDefs.forEach(function (c) {
+  var n = pad(c.idx);
+  slideLines += "  { file: 'phrase-" + n + ".html', label: '" + n + " " + c.ja + " — フレーズ' },\n";
+  slideLines += "  { file: 'roleplay-" + n + ".html', label: '" + n + " " + c.ja + " — ロールプレイ' },\n";
+});
+slideLines += "  { file: 'cta.html', label: '無料留学カウンセリングのご案内' }\n";
+var viewerHtml = '<!DOCTYPE html>\n<html lang="ja">\n<head>\n<meta charset="UTF-8">\n<title>タビケン留学 Phrasebook Viewer</title>\n<style>\n' +
+  '* { box-sizing: border-box; margin: 0; padding: 0; }\n' +
+  'body { background: #111; font-family: "Helvetica Neue", sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }\n' +
+  '#toolbar { background: #1a1a1a; border-bottom: 1px solid #333; padding: 8px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }\n' +
+  '#counter { color: #fff; font-size: 13px; font-weight: 700; min-width: 80px; }\n' +
+  '#title { color: #aaa; font-size: 12px; flex: 1; }\n' +
+  '.btn { background: #333; color: #fff; border: none; padding: 6px 18px; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: 600; }\n' +
+  '.btn:hover { background: ' + ACCENT + '; color: #111; }\n' +
+  '.btn:disabled { opacity: 0.3; cursor: default; }\n' +
+  '#hint { color: #555; font-size: 11px; }\n' +
+  '#frame-wrap { flex: 1; display: flex; align-items: center; justify-content: center; background: #222; overflow: hidden; padding: 12px; }\n' +
+  'iframe { width: 1123px; height: 794px; border: none; transform-origin: top left; display: block; flex-shrink: 0; }\n' +
+  '</style>\n</head>\n<body>\n' +
+  '<div id="toolbar">\n  <button class="btn" id="btn-prev">&#8592; Prev</button>\n  <button class="btn" id="btn-next">Next &#8594;</button>\n  <span id="counter"></span>\n  <span id="title"></span>\n  <span id="hint">← → キーでも操作できます</span>\n</div>\n' +
+  '<div id="frame-wrap"><iframe id="slide" src=""></iframe></div>\n' +
+  '<script>\nvar slides = [\n' + slideLines + '];\n' +
+  'var current = 0;\nvar iframe = document.getElementById("slide");\nvar counter = document.getElementById("counter");\nvar title = document.getElementById("title");\nvar btnPrev = document.getElementById("btn-prev");\nvar btnNext = document.getElementById("btn-next");\n' +
+  'function scale() { var wrap = document.getElementById("frame-wrap"); var availW = wrap.clientWidth - 24; var availH = wrap.clientHeight - 24; var s = Math.min(availW / 1123, availH / 794); iframe.style.transform = "scale(" + s + ")"; iframe.style.marginLeft = ((availW - 1123 * s) / 2) + "px"; iframe.style.marginTop = ((availH - 794 * s) / 2) + "px"; }\n' +
+  'function goTo(n) { current = n; iframe.src = slides[current].file; counter.textContent = (current + 1) + " / " + slides.length; title.textContent = slides[current].label; btnPrev.disabled = current === 0; btnNext.disabled = current === slides.length - 1; }\n' +
+  'btnPrev.addEventListener("click", function() { if (current > 0) goTo(current - 1); });\nbtnNext.addEventListener("click", function() { if (current < slides.length - 1) goTo(current + 1); });\n' +
+  'document.addEventListener("keydown", function(e) { if (e.key === "ArrowRight" || e.key === "ArrowDown") { if (current < slides.length - 1) goTo(current + 1); } if (e.key === "ArrowLeft" || e.key === "ArrowUp") { if (current > 0) goTo(current - 1); } });\n' +
+  'window.addEventListener("resize", scale);\ngoTo(0);\nsetTimeout(scale, 100);\niframe.addEventListener("load", scale);\n</script>\n</body>\n</html>';
+fs.writeFileSync(outDir + 'viewer.html', viewerHtml);
+console.log('viewer.html');
+
+console.log('Done. 24 files generated (23 pages + viewer).');

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>タビケン留学 Phrasebook Viewer</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111; font-family: "Helvetica Neue", sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+#toolbar { background: #1a1a1a; border-bottom: 1px solid #333; padding: 8px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+#counter { color: #fff; font-size: 13px; font-weight: 700; min-width: 80px; }
+#title { color: #aaa; font-size: 12px; flex: 1; }
+.btn { background: #333; color: #fff; border: none; padding: 6px 18px; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: 600; }
+.btn:hover { background: #FFA500; color: #111; }
+.btn:disabled { opacity: 0.3; cursor: default; }
+#hint { color: #555; font-size: 11px; }
+#frame-wrap { flex: 1; display: flex; align-items: center; justify-content: center; background: #222; overflow: hidden; padding: 12px; }
+iframe { width: 1123px; height: 794px; border: none; transform-origin: top left; display: block; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div id="toolbar">
+  <button class="btn" id="btn-prev">&#8592; Prev</button>
+  <button class="btn" id="btn-next">Next &#8594;</button>
+  <span id="counter"></span>
+  <span id="title"></span>
+  <span id="hint">← → キーでも操作できます</span>
+</div>
+<div id="frame-wrap"><iframe id="slide" src=""></iframe></div>
+<script>
+var slides = [
+  { file: 'cover.html', label: '表紙' },
+  { file: 'howto.html', label: '使い方ガイド' },
+  { file: 'phrase-01.html', label: '01 入りの挨拶 — フレーズ' },
+  { file: 'roleplay-01.html', label: '01 入りの挨拶 — ロールプレイ' },
+  { file: 'phrase-02.html', label: '02 ドリンクの注文 — フレーズ' },
+  { file: 'roleplay-02.html', label: '02 ドリンクの注文 — ロールプレイ' },
+  { file: 'phrase-03.html', label: '03 フードの注文 — フレーズ' },
+  { file: 'roleplay-03.html', label: '03 フードの注文 — ロールプレイ' },
+  { file: 'phrase-04.html', label: '04 アレルギー・特別対応 — フレーズ' },
+  { file: 'roleplay-04.html', label: '04 アレルギー・特別対応 — ロールプレイ' },
+  { file: 'phrase-05.html', label: '05 おすすめ・追加 — フレーズ' },
+  { file: 'roleplay-05.html', label: '05 おすすめ・追加 — ロールプレイ' },
+  { file: 'phrase-06.html', label: '06 お会計 — フレーズ' },
+  { file: 'roleplay-06.html', label: '06 お会計 — ロールプレイ' },
+  { file: 'phrase-07.html', label: '07 会計のトラブル・分け方 — フレーズ' },
+  { file: 'roleplay-07.html', label: '07 会計のトラブル・分け方 — ロールプレイ' },
+  { file: 'phrase-08.html', label: '08 スモールトーク — フレーズ' },
+  { file: 'roleplay-08.html', label: '08 スモールトーク — ロールプレイ' },
+  { file: 'phrase-09.html', label: '09 求職・レジュメ対応 — フレーズ' },
+  { file: 'roleplay-09.html', label: '09 求職・レジュメ対応 — ロールプレイ' },
+  { file: 'phrase-10.html', label: '10 同僚バリスタとの連携 — フレーズ' },
+  { file: 'roleplay-10.html', label: '10 同僚バリスタとの連携 — ロールプレイ' },
+  { file: 'cta.html', label: '無料留学カウンセリングのご案内' }
+];
+var current = 0;
+var iframe = document.getElementById("slide");
+var counter = document.getElementById("counter");
+var title = document.getElementById("title");
+var btnPrev = document.getElementById("btn-prev");
+var btnNext = document.getElementById("btn-next");
+function scale() { var wrap = document.getElementById("frame-wrap"); var availW = wrap.clientWidth - 24; var availH = wrap.clientHeight - 24; var s = Math.min(availW / 1123, availH / 794); iframe.style.transform = "scale(" + s + ")"; iframe.style.marginLeft = ((availW - 1123 * s) / 2) + "px"; iframe.style.marginTop = ((availH - 794 * s) / 2) + "px"; }
+function goTo(n) { current = n; iframe.src = slides[current].file; counter.textContent = (current + 1) + " / " + slides.length; title.textContent = slides[current].label; btnPrev.disabled = current === 0; btnNext.disabled = current === slides.length - 1; }
+btnPrev.addEventListener("click", function() { if (current > 0) goTo(current - 1); });
+btnNext.addEventListener("click", function() { if (current < slides.length - 1) goTo(current + 1); });
+document.addEventListener("keydown", function(e) { if (e.key === "ArrowRight" || e.key === "ArrowDown") { if (current < slides.length - 1) goTo(current + 1); } if (e.key === "ArrowLeft" || e.key === "ArrowUp") { if (current > 0) goTo(current - 1); } });
+window.addEventListener("resize", scale);
+goTo(0);
+setTimeout(scale, 100);
+iframe.addEventListener("load", scale);
+</script>
+</body>
+</html>
