@@ -1,0 +1,25 @@
+{
+  "name": "englead-phrasebook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tokudanaohiroc-lgtm/englead-phrasebook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tokudanaohiroc-lgtm/englead-phrasebook/issues"
+  },
+  "homepage": "https://github.com/tokudanaohiroc-lgtm/englead-phrasebook#readme",
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^25.0.2"
+  }
+}
