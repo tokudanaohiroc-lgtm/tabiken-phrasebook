@@ -6,9 +6,10 @@
   "scripts": {
     "generate": "node update-pages.js",
     "check": "node check-japanese.js",
-    "build": "npm run generate && npm run check",
+    "build": "npm run generate && npm run check && npm run check-layout",
     "test": "node check-japanese.js",
-    "codex-review": "node codex-review.js"
+    "codex-review": "node codex-review.js",
+    "check-layout": "node check-layout.js"
   },
   "repository": {
     "type": "git",
