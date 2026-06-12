@@ -1,0 +1,11 @@
+#!/bin/sh
+# ── 配布前ゲート②: 化け再確認 ＋ レイアウト（文字あふれ）─────────
+# 公開直前の最終関門。Chromeで実描画し固定枠からの文字あふれを検出。
+npm run --silent check || { echo "✋ プッシュ中止: 日本語チェックに失敗。"; exit 1; }
+npm run --silent check-layout
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "✋ プッシュ中止: レイアウト（文字あふれ）に失敗しました。"
+  echo "   該当の解説文を短くして npm run build で再生成してから push してください。"
+  exit 1
+fi

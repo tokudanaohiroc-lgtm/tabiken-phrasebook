@@ -1,0 +1,10 @@
+#!/bin/sh
+# ── 配布前ゲート①: 日本語チェック（化け・簡体字）─────────────────
+# update-pages*.js / content/*.json / output* を文字単位で検査。化けがあればコミット中止。
+npm run --silent check
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "✋ コミット中止: 日本語チェック（化け・簡体字）に失敗しました。"
+  echo "   上に出た文字を修正してから再コミットしてください（詳細は README.md）。"
+  exit 1
+fi

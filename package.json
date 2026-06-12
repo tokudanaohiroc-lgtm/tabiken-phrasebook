@@ -9,7 +9,8 @@
     "build": "npm run generate && npm run check && npm run check-layout",
     "test": "node check-japanese.js",
     "codex-review": "node codex-review.js",
-    "check-layout": "node check-layout.js"
+    "check-layout": "node check-layout.js",
+    "postinstall": "git config core.hooksPath hooks 2>/dev/null || true"
   },
   "repository": {
     "type": "git",

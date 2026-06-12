@@ -25,6 +25,15 @@ npm run build
 
 > 注: フレーズセル/解説枠は高さ固定＋overflow:hidden。解説を長くすると下が切れるため、`check-layout.js` がChromeで実描画して `scrollHeight > clientHeight` を検出し止める。
 
+### これらは git フックで自動強制される（実行忘れ防止）
+
+チェックの「実行忘れ」で事故が起きないよう、git フック（`hooks/`、`core.hooksPath`で有効化）で自動的に走る。
+
+- **pre-commit**: `npm run check`（化けゲート）。化けがあれば**コミットを中止**。
+- **pre-push**: `npm run check` ＋ `npm run check-layout`（レイアウトゲート）。あれば**プッシュを中止**。
+
+`npm install` の `postinstall` で `core.hooksPath` が自動設定される（クローン直後から有効）。手動で有効化する場合は `git config core.hooksPath hooks`。
+
 1段目（check-japanese.js）は文字単位なので「正しい漢字を使った誤字」や「文章の不自然さ」は捕まえられない。そこを2段目のCodex（codex-review.js）が意味レベルで補う。**新しい巻を出すときは必ず両方を通すこと。**
 
 ### 2段目：Codex解説レビュー（`npm run codex-review`）
