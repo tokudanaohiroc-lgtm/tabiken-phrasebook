@@ -1,23 +1,27 @@
 {
-  "name": "englead-phrasebook",
+  "name": "tabiken-phrasebook",
   "version": "1.0.0",
-  "description": "",
-  "main": "build.js",
+  "description": "タビケン留学 フレーズガイドブック",
+  "main": "update-pages.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate": "node update-pages.js",
+    "check": "node check-japanese.js",
+    "build": "npm run generate && npm run check",
+    "test": "node check-japanese.js",
+    "codex-review": "node codex-review.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tokudanaohiroc-lgtm/englead-phrasebook.git"
+    "url": "git+https://github.com/tokudanaohiroc-lgtm/tabiken-phrasebook.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/tokudanaohiroc-lgtm/englead-phrasebook/issues"
+    "url": "https://github.com/tokudanaohiroc-lgtm/tabiken-phrasebook/issues"
   },
-  "homepage": "https://github.com/tokudanaohiroc-lgtm/englead-phrasebook#readme",
+  "homepage": "https://github.com/tokudanaohiroc-lgtm/tabiken-phrasebook#readme",
   "dependencies": {
     "pdf-lib": "^1.17.1",
     "puppeteer": "^25.0.2"

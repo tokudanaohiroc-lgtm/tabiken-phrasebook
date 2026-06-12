@@ -78,251 +78,8 @@ var catDefs = data.categories.map(function (c, i) {
 
 // ── Roleplay definitions ──────────────────────────────────────────────────────
 
+// ── Roleplay definitions (Cafe Counter Service) ──────────
 var rpDefs = {
-  'connection': {
-    sceneTitle: '月曜朝の定例MTG',
-    sceneTitleEn: 'Monday Morning Standup',
-    sceneDesc: 'Kenjiが主催。チームは米国・欧州に分散。<br>開始直後に次々トラブルが起きるが、<br>身についたフレーズで冷静に対処する。',
-    imageFile: 'home-office-start.png',
-    cultureText: '米国のオンライン会議では、ホストが音声確認から始めるのが慣例。全員に「聴こえてる？」と問いかけることで共通のスタートラインを作る。録音の事前告知もエチケットとして定着しており、無告知の録音は信頼関係を損ねることがある。',
-    bubbles: [
-      { speaker: 'kenta', text: 'Hey, can everyone <strong>hear me okay</strong>?', refs: [1] },
-      { speaker: 'sarah', text: 'Loud and clear! Tom — <strong>you\'re on mute</strong>.', refs: [2] },
-      { speaker: 'tom',   text: 'Sorry about that! Can you hear me now?', refs: [] },
-      { speaker: 'kenta', text: 'Perfect. Let\'s <strong>go ahead and get started</strong>. I\'ll <strong>drop the agenda in the chat</strong>.', refs: [3, 7] },
-      { speaker: 'sarah', text: 'Got it. <strong>Can you see my screen</strong>? I want to pull up the deck.', refs: [6] },
-      { speaker: 'kenta', text: 'Yep, all good. <strong>Just a heads-up</strong> — I\'m <strong>recording this call</strong>.', refs: [8] },
-      { speaker: 'sarah', text: 'No problem. Everyone, <strong>feel free to use the chat</strong> for questions!', refs: [9] },
-      { speaker: 'tom',   text: 'Thanks. <strong>I\'m going to share my screen</strong> for the Berlin numbers — just getting it ready.', refs: [5] },
-      { speaker: 'kenta', text: 'Take your time. <strong>We\'ll give it another minute</strong>.', refs: [4] }
-    ],
-    keyPoints: [
-      { phrase: '"hear me okay?"', desc: '"Can you hear me?" より全員への問いかけ感が強い。会議開始直後の定番確認。' },
-      { phrase: '"go ahead and"', desc: '「では〜しましょう」と踏み出す印象を与える。"let\'s start" より積極的なニュアンス。' },
-      { phrase: '"heads-up"', desc: '事前告知の万能フレーズ。録音・遅延・変更など何でも前置きできる。単独でも使える。' }
-    ]
-  },
-  'facilitation': {
-    sceneTitle: 'Q3週次チームシンク',
-    sceneTitleEn: 'Q3 Weekly Team Sync',
-    sceneDesc: 'Kentaがファシリテーター。<br>議題3項目だが議論が脱線しがち。<br>フレーズを駆使して会議を舵取りする。',
-    imageFile: 'conference-room.png',
-    cultureText: 'ファシリテーターの役割は議論に参加するだけでなく、時間内に全議題を終わらせる管理者としての責任も大きい。話が脱線しそうになる前に積極的に軸修正できる素早さが、引き締まった会議を作る。',
-    bubbles: [
-      { speaker: 'kenta', text: 'OK everyone. Let\'s <strong>kick things off</strong> with the Q3 update.', refs: [11] },
-      { speaker: 'kenta', text: '<strong>Today\'s agenda</strong> has three <strong>items</strong>.', refs: [12] },
-      { speaker: 'tom',   text: 'Before we start — I have a quick update on Berlin.', refs: [] },
-      { speaker: 'kenta', text: '<strong>Can we hold that thought</strong>, Tom? We\'ve got a lot to cover. We\'ve got 30 minutes, so let\'s <strong>dive right in</strong>.', refs: [19, 16] },
-      { speaker: 'kenta', text: '<strong>Take it away</strong>, Sarah.', refs: [17] },
-      { speaker: 'sarah', text: 'Thanks. So Q3 revenue came in at 112% of target...', refs: [] },
-      { speaker: 'tom',   text: 'That connects to the Berlin rollout issue, actually —', refs: [] },
-      { speaker: 'kenta', text: 'I want to <strong>keep us on track</strong>. Let\'s <strong>park that and come back to it</strong>.', refs: [14, 18] },
-      { speaker: 'kenta', text: '<strong>Moving on to</strong> item two.', refs: [13] },
-      { speaker: 'kenta', text: 'OK, let\'s <strong>circle back</strong> to Tom\'s point now. And then I\'d like to <strong>open it up for discussion</strong>.', refs: [15, 20] }
-    ],
-    keyPoints: [
-      { phrase: '"kick things off"', desc: '開始の宣言に使う定番。スポーツ由来で動きのある言い出し。' },
-      { phrase: '"park that / circle back"', desc: '保留（park）して後で戻る（circle back）のセット。会議の流れを止めずに撑ける技。' },
-      { phrase: '"open it up for discussion"', desc: '説明から全員議論への転換点。意見を求めるサイン。' }
-    ]
-  },
-  'opinions': {
-    sceneTitle: '市場参入戦略議論',
-    sceneTitleEn: 'Market Entry Strategy',
-    sceneDesc: '新規市場参入の提案をめぐり、<br>Kentaが見解を示し、Sarahが反論、<br>Tomが折衷案を出す場面。',
-    imageFile: 'whiteboard-discussion.png',
-    cultureText: '英語ネイティブは「反対」と思っても直接言わないことが多い。「その立場はわかる、だが…」のように「認めつつ推す」形式は日本語より浸透している。「反論」より「別の角度を加える」という姿勢で挑んでみよう。',
-    bubbles: [
-      { speaker: 'kenta', text: '<strong>From my perspective</strong>, we should target the mid-market segment first.', refs: [21] },
-      { speaker: 'sarah', text: 'I\'d like to <strong>add something here</strong>. That\'s valid, but we need to consider risk.', refs: [22] },
-      { speaker: 'tom',   text: 'Just to <strong>throw it out there</strong> — what if we piloted one city first?', refs: [23] },
-      { speaker: 'kenta', text: '<strong>Here\'s my take on it</strong>: the data actually supports a phased approach.', refs: [24] },
-      { speaker: 'sarah', text: '<strong>To be honest with you</strong>, I think we\'re underestimating the competition.', refs: [25] },
-      { speaker: 'kenta', text: 'I think we need to <strong>push back on that</strong> timeline. It\'s too aggressive.', refs: [26] },
-      { speaker: 'tom',   text: '<strong>That\'s a fair point</strong>. Speed vs. stability is the real trade-off here.', refs: [27] },
-      { speaker: 'kenta', text: '<strong>Off the top of my head</strong>, a pilot could save us around 20% in launch costs.', refs: [28] },
-      { speaker: 'sarah', text: '<strong>This is just my gut feeling</strong>, but I think the timing is actually right.', refs: [29] },
-      { speaker: 'tom',   text: '<strong>Building on what</strong> Kenta said, let\'s propose a 3-city pilot to the board.', refs: [30] }
-    ],
-    keyPoints: [
-      { phrase: '"from my perspective"', desc: '意見の前置き。「私の立場では」と明示できる。"my take on it" も同じ用途。' },
-      { phrase: '"push back on that"', desc: '建設的な反論。"disagree" よりニュアンスが柔らか。' },
-      { phrase: '"building on what [Name] said"', desc: '前の発言を踏まえた引き継ぎ。チームで考えている感が出る。' }
-    ]
-  },
-  'questions': {
-    sceneTitle: '予算レビューミーティング',
-    sceneTitleEn: 'Q4 Budget Review',
-    sceneDesc: 'Sarahが予算案を発表。<br>KenjiとTomが確認質問を重ねて、<br>認識をすり合わせる場面。',
-    imageFile: 'one-on-one.png',
-    cultureText: '英語会議では、理解したつもりで進めるより、こまめに確認する方が好評される。曖昧なまま流すと後で認識のズレが生じるリスクがある。「私の理解では」と言いながら確認するこまめさは信頼の証。',
-    bubbles: [
-      { speaker: 'sarah', text: 'So we\'re proposing a 15% budget increase for APAC in Q4.', refs: [] },
-      { speaker: 'kenta', text: '<strong>Could you elaborate on that</strong>? What\'s driving the 15%?', refs: [31] },
-      { speaker: 'sarah', text: '<strong>Just to clarify</strong> — this covers Q4 only, not the full year.', refs: [32] },
-      { speaker: 'tom',   text: '<strong>Can you walk me through</strong> the regional breakdown one more time?', refs: [33] },
-      { speaker: 'kenta', text: 'I want to <strong>make sure I\'m following you</strong> — the bulk is Japan market?', refs: [34] },
-      { speaker: 'sarah', text: 'Exactly, Japan is 60% of the proposed increase.', refs: [] },
-      { speaker: 'tom',   text: '<strong>So if I understand correctly</strong>, we\'d hit the ceiling by end of March?', refs: [35] },
-      { speaker: 'kenta', text: '<strong>Are we on the same page</strong> then — pilot Japan, review in Q1?', refs: [36] },
-      { speaker: 'sarah', text: 'Yes. <strong>What\'s the timeline looking like</strong> for board approval?', refs: [37] },
-      { speaker: 'kenta', text: '<strong>What\'s the blocker</strong> on our side right now?', refs: [38] },
-      { speaker: 'tom',   text: 'Legal sign-off. Sarah, <strong>what\'s your bandwidth like</strong> this week?', refs: [40] }
-    ],
-    keyPoints: [
-      { phrase: '"walk me through"', desc: 'ステップごとに説明してもらうイメージ。「もう一回」より柔らかい。' },
-      { phrase: '"are we on the same page?"', desc: '認識共有の確認。同じページを読んでいる？という比喩。' },
-      { phrase: '"what\'s the blocker?"', desc: 'ITプロジェクト発祥の言葉が一般ビジネスに洸透。途中で止まっている原因を聞く。' }
-    ]
-  },
-  'agreement': {
-    sceneTitle: 'プロジェクト期日交渉',
-    sceneTitleEn: 'Deadline Negotiation',
-    sceneDesc: '納期を2週間前倒しにする提案が出て、<br>各メンバーが立場を表明する場面。<br>譲歩と確認を繰り返して典型的な著地点を探る。',
-    imageFile: 'negotiation.png',
-    cultureText: '英語の交渉では「完全拒否」でなく「条件付き許容」の形でまとめるのがプロフェッショナル。「これは受け入れられない」と「これなら許容できる」を明確に伝えることが大切。',
-    bubbles: [
-      { speaker: 'kenta', text: 'We\'re proposing to move the launch up by two weeks. Thoughts?', refs: [] },
-      { speaker: 'sarah', text: '<strong>That makes total sense</strong> from a competitive standpoint.', refs: [42] },
-      { speaker: 'tom',   text: '<strong>I see your point</strong>, but <strong>I have some reservations</strong> about the dev timeline.', refs: [43, 44] },
-      { speaker: 'kenta', text: 'Tom, is a two-week pull-forward workable at all?', refs: [] },
-      { speaker: 'tom',   text: 'Honestly, two weeks is <strong>a no-go for me</strong>.', refs: [45] },
-      { speaker: 'sarah', text: 'What about one week? <strong>I can live with</strong> one week.', refs: [46] },
-      { speaker: 'tom',   text: 'One week... <strong>I\'m not sold on it yet</strong>, but I\'m open to discussing.', refs: [47] },
-      { speaker: 'sarah', text: 'Kenji, <strong>you\'ve convinced me</strong> on the urgency angle.', refs: [48] },
-      { speaker: 'kenta', text: 'If we can\'t land on a number now, let\'s <strong>agree to disagree</strong> and loop in the VP.', refs: [49] },
-      { speaker: 'tom',   text: 'No, no — one week, <strong>I\'m on board with that</strong>. And <strong>I\'m with you on this one</strong>, Kenji.', refs: [41, 50] }
-    ],
-    keyPoints: [
-      { phrase: '"no-go"', desc: '完全に受け入れられないことを明確に伝える。使いすぎには注意が必要。' },
-      { phrase: '"I can live with that"', desc: '完璧ではないが許容できるという妛協の言葉。交渉の定番フレーズ。' },
-      { phrase: '"agree to disagree"', desc: '対立を残さず認識の相違を認めて先に進む。拒否でなく着地点を探すフレーズ。' }
-    ]
-  },
-  'time': {
-    sceneTitle: '時間超過の週次シンク',
-    sceneTitleEn: 'Running-Long Weekly Sync',
-    sceneDesc: 'アジェンダが多く、残り5分で議题が3つ。<br>Kenjiが時間管理フレーズを驱使いして<br>会議をのらしにける。',
-    imageFile: 'time-pressure.png',
-    cultureText: 'オンライン会議で時間遵守は特別重要。次の予定がある参加者への配慮がプロとしての姿勢を示す。時間切れを自然に伝えられるフレーズを持っておくだけで会議のクオリティが上がる。',
-    bubbles: [
-      { speaker: 'kenta', text: 'Everyone — <strong>we\'re running short on time</strong>. Three items left, five minutes.', refs: [51] },
-      { speaker: 'tom',   text: 'Should we <strong>table</strong> the compliance update <strong>for now</strong>?', refs: [52] },
-      { speaker: 'sarah', text: 'The vendor issue — <strong>can we take that offline</strong>? Just you and me, Kenji.', refs: [53] },
-      { speaker: 'kenta', text: 'Good idea. <strong>Let\'s try to wrap up</strong> in the next three minutes.', refs: [54] },
-      { speaker: 'tom',   text: 'I want to <strong>be mindful of everyone\'s time</strong>, so I\'ll keep this brief.', refs: [55] },
-      { speaker: 'sarah', text: '<strong>Can we fast-track</strong> the budget approval? It\'s blocking the team.', refs: [56] },
-      { speaker: 'kenta', text: '<strong>We\'re going a little over</strong> — does anyone need to drop at the hour?', refs: [57] },
-      { speaker: 'kenta', text: '<strong>Can we get a quick show of hands</strong> on the Q1 revenue target?', refs: [58] },
-      { speaker: 'sarah', text: '<strong>Let\'s keep it brief</strong> — yes or no on the proposal, please.', refs: [59] },
-      { speaker: 'tom',   text: 'The vendor contract details are <strong>a conversation for another time</strong>.', refs: [60] }
-    ],
-    keyPoints: [
-      { phrase: '"running short on time"', desc: '時間切迫の定番表現。焦らず自然に全員へ共有できる。' },
-      { phrase: '"take this offline"', desc: '全体会議でなく個別に話す提案。ビジネス英語の定番。' },
-      { phrase: '"show of hands"', desc: '振り分けや簡易投票に。オンラインではリアクションボタンで代用することも。' }
-    ]
-  },
-  'technical': {
-    sceneTitle: 'トラブル続出のMTG',
-    sceneTitleEn: 'Connection Nightmare Meeting',
-    sceneDesc: '次々と技術トラブルが起きる中、<br>Kenjiが冷静に対処しながら<br>会議を進める場面。',
-    imageFile: 'tech-trouble.png',
-    cultureText: 'トラブルを動じずに報告できることが重要。「接続が切れている」「エコーが出ている」をすぐに伝えられると会議の流れが止まらない。トラブル対応をサラッとこなせる落ち着きもプロの証明。',
-    bubbles: [
-      { speaker: 'kenta', text: 'So as I was saying, the Q3 forecast shows—', refs: [] },
-      { speaker: 'tom',   text: 'Kenji, <strong>you\'re breaking up</strong> a little. Can you hear us?', refs: [61] },
-      { speaker: 'kenta', text: '<strong>Can you repeat that</strong>? Tom, <strong>you cut out</strong> for a second.', refs: [62] },
-      { speaker: 'sarah', text: '<strong>There\'s a bit of an echo on my end</strong> — let me mute for a sec.', refs: [63] },
-      { speaker: 'tom',   text: '<strong>Could you turn off your video</strong>? <strong>The connection seems slow</strong>.', refs: [64] },
-      { speaker: 'kenta', text: '<strong>Sorry, I was on mute</strong>. Starting again—', refs: [65] },
-      { speaker: 'tom',   text: '<strong>Let me try reconnecting</strong> — back in a sec.', refs: [66] },
-      { speaker: 'kenta', text: 'Welcome back, Tom. <strong>Can everyone still see my screen</strong>?', refs: [67] },
-      { speaker: 'sarah', text: '<strong>Sorry about the background noise</strong> — construction outside.', refs: [68] },
-      { speaker: 'tom',   text: '<strong>My connection is a bit spotty today</strong> — I\'m at the airport. <strong>Can someone else take over the screen share</strong>?', refs: [69, 70] }
-    ],
-    keyPoints: [
-      { phrase: '"you\'re breaking up"', desc: '音声が途切れているときの定番。電話でも同じ表現。' },
-      { phrase: '"you cut out"', desc: '突然通信が途切れたことを伝える。「聴こえなかった」の最短表現。' },
-      { phrase: '"spotty"', desc: '接続が不安定なことを伝える口語表現。名詞として使うことが多い。' }
-    ]
-  },
-  'wrapup': {
-    sceneTitle: 'プロジェクト計画を締める',
-    sceneTitleEn: 'Project Planning Wrap-up',
-    sceneDesc: 'プロジェクト計画ミーティングの最後10分。<br>アクションアイテムの整理と<br>担当割り当てを行う場面。',
-    imageFile: 'wrap-up.png',
-    cultureText: '英語会議の「アクションアイテム」は議事録の核心。誰がいつまでに何をするかを確認して会議を終わる文化が浸透している。担当者の名前と期限を必ずセットで確認すること。',
-    bubbles: [
-      { speaker: 'kenta', text: 'OK, let me <strong>recap</strong> what we discussed today.', refs: [71] },
-      { speaker: 'kenta', text: 'Let me <strong>summarize the action items</strong>: design mock-up by Friday, dev build by Monday EOD.', refs: [72] },
-      { speaker: 'kenta', text: '<strong>Who\'s taking the lead</strong> on the design mock-up?', refs: [73] },
-      { speaker: 'sarah', text: 'I\'ll <strong>own that</strong>.', refs: [74] },
-      { speaker: 'kenta', text: 'Great. <strong>Let\'s put a deadline on</strong> the dev task — Monday EOD, Tom?', refs: [75] },
-      { speaker: 'tom',   text: 'Works for me. I\'ll <strong>send out a follow-up email</strong> with all the details.', refs: [76] },
-      { speaker: 'kenta', text: 'Sarah, <strong>can you share</strong> the budget breakdown <strong>in writing after the call</strong>?', refs: [77] },
-      { speaker: 'kenta', text: 'We\'ll need to <strong>reconvene</strong> on the legal review next week.', refs: [78] },
-      { speaker: 'kenta', text: '<strong>Any final questions</strong> before we <strong>wrap up</strong>?', refs: [79] },
-      { speaker: 'tom',   text: 'All good. I\'ll <strong>put together the meeting notes</strong>.', refs: [80] }
-    ],
-    keyPoints: [
-      { phrase: '"recap"', desc: 'recapitulateの略。会議内容を整理する定番の導入詞。' },
-      { phrase: '"own that"', desc: 'タスクの責任を受け持つ。「担当する」より責任感が強い表現。' },
-      { phrase: '"put a deadline on that"', desc: '期限のないタスクは完了しない。アクションアイテムの期限固定に使える一言。' }
-    ]
-  },
-  'closing': {
-    sceneTitle: '四半期レビューのクロージング',
-    sceneTitleEn: 'Quarterly Review Close',
-    sceneDesc: 'Q3レビューMTGの最終盤。<br>全員で次のステップを確認し、<br>温かく会議を締めくくる場面。',
-    imageFile: 'goodbye.png',
-    cultureText: '会議の締めにも文化的ニュアンスがある。単なる「さようなら」でなく、次のコンタクトや感謝を残す言葉を使うことで信頼関係を積み重ねられる。',
-    bubbles: [
-      { speaker: 'kenta', text: 'Alright, <strong>thanks everyone for joining</strong> today.', refs: [81] },
-      { speaker: 'sarah', text: '<strong>Great discussion</strong> — really productive session.', refs: [82] },
-      { speaker: 'tom',   text: '<strong>Looking forward to our next sync</strong> on this topic.', refs: [83] },
-      { speaker: 'kenta', text: '<strong>Same time next week</strong>?', refs: [88] },
-      { speaker: 'sarah', text: 'Works for me. I\'ll <strong>send around a meeting summary</strong> by EOD.', refs: [87] },
-      { speaker: 'kenta', text: 'If there are any loose ends, <strong>we\'ll pick this up next time</strong>.', refs: [90] },
-      { speaker: 'tom',   text: 'Sounds good. <strong>Have a good rest of your day</strong>, everyone.', refs: [84] },
-      { speaker: 'sarah', text: '<strong>Talk soon</strong>!', refs: [85] },
-      { speaker: 'kenta', text: '<strong>Let\'s touch base</strong> if anything comes up before next week.', refs: [86] },
-      { speaker: 'tom',   text: '<strong>Take care</strong>, everyone. Good work today.', refs: [89] }
-    ],
-    keyPoints: [
-      { phrase: '"great discussion"', desc: '参加者の努力を認める一言。気持よく会議を終われる。' },
-      { phrase: '"let\'s touch base"', desc: '野球由来の惑用句。メールでも「I\'ll touch base with you」とよく使われる。' },
-      { phrase: '"pick this up next time"', desc: '継続予定の話顔を次回に持ち越すときの軽い宣言。' }
-    ]
-  },
-  'presentation': {
-    sceneTitle: 'Q4レポートとプロダクトデモ',
-    sceneTitleEn: 'Q4 Report & Product Demo',
-    sceneDesc: 'Kenjiがグローバルステークホルダーへ<br>四半期レポートとプロダクトデモを<br>プレゼンする場面。',
-    imageFile: 'presentation.png',
-    cultureText: '英語プレゼンは「足し算で話す」のが基本。資料の説明中に聴き手への確認を挟み込み、一方的に話す時間を最小化する。「ここで詳しく」と「ここで短く」の両方が使い分けられると強い。',
-    bubbles: [
-      { speaker: 'kenta', text: 'Thanks for joining. I\'d like to <strong>walk you through</strong> this slide on Q4 performance.', refs: [91] },
-      { speaker: 'kenta', text: '<strong>As you can see here</strong>, conversion is up 18% quarter-on-quarter.', refs: [92] },
-      { speaker: 'tom',   text: 'Can you zoom in? The numbers are quite small on my screen.', refs: [] },
-      { speaker: 'kenta', text: 'Sure. <strong>Let me zoom in on that</strong>.', refs: [93] },
-      { speaker: 'kenta', text: '<strong>This chart shows</strong> the regional breakdown across APAC and EMEA.', refs: [94] },
-      { speaker: 'kenta', text: 'I\'ll <strong>pause here for questions</strong> — anyone want to jump in?', refs: [95] },
-      { speaker: 'sarah', text: 'All good, keep going.', refs: [] },
-      { speaker: 'kenta', text: '<strong>Bear with me</strong> while I <strong>pull this up</strong> — switching to the demo environment.', refs: [96] },
-      { speaker: 'kenta', text: 'Before we dive into the demo, let me <strong>take you back to the big picture</strong>.', refs: [97] },
-      { speaker: 'kenta', text: '<strong>Does anyone have questions so far</strong>? Then: <strong>the key takeaway here is</strong> that retention improved across all regions. I\'ll <strong>leave this link in the chat</strong> for the full report.', refs: [98, 99, 100] }
-    ],
-    keyPoints: [
-      { phrase: '"walk you through"', desc: 'ステップごとに説明するイメージ。プレゼンの導入に最適。' },
-      { phrase: '"key takeaway"', desc: '「持ち帰る最重要ポイント」の意。プレゼン終籂にも使える。' },
-      { phrase: '"bear with me"', desc: '操作中に待ってもらうときの定番表現。指示がないと仸りもなく沈黙になりがち。' }
-    ]
-  }
-};
-
-// ── Roleplay definitions (Cafe Counter Service / タビケン版で上書き) ───────────────────
-rpDefs = {
   'greeting': {
     sceneTitle: '開店直後のカウンター',
     sceneTitleEn: 'Morning at the Counter',
@@ -348,7 +105,7 @@ rpDefs = {
     sceneTitleEn: 'Taking a Coffee Order',
     sceneDesc: 'Yunaが注文。サイズ・ミルク・ショット数を、<br>Akariが手際よく確認していく。<br>豪らしいミルクの選択肢がポイント。',
     imageFile: 'scene-drinks.png',
-    cultureText: '豪ではミルクの選択肢（full cream / skim / oat / soy）が当たり前。オーツミルクの人気が高く、聞き漏らすと作り直しに。復唱して確定する習慣がミスを防ぐ。',
+    cultureText: '豪ではミルクの選択肢（full cream / skim / oat / soy）が当たり前で、オーツミルクの人気も高い。聞き漏らすと作り直しにつながるので、復唱して確定する習慣がミスを防ぐ。',
     bubbles: [
       { speaker: 'akari', text: 'Hi! <strong>What size — small, regular, or large</strong>?', refs: [11] },
       { speaker: 'yuna',  text: 'Large latte, please.', refs: [] },
@@ -398,7 +155,7 @@ rpDefs = {
       { speaker: 'lucas', text: 'Oh, perfect — thanks so much!', refs: [] }
     ],
     keyPoints: [
-      { phrase: '"I’ll flag the allergy with the kitchen."', desc: '確認して終わりでなく厨房に共有するまでが対応。' },
+      { phrase: '"I’ll flag the allergy with the kitchen."', desc: '確認だけで終わらせず、厨房に共有するところまでが対応。' },
       { phrase: '"I can grab you a reusable metal one"', desc: '紙ストローが苦手な人に、ステンレス等の代替を提案できると親切。' }
     ]
   },
@@ -417,8 +174,8 @@ rpDefs = {
       { speaker: 'cooper', text: 'Ha, noted! <strong>That’s everything.</strong>', refs: [49] }
     ],
     keyPoints: [
-      { phrase: '"Fresh batch... keen?"', desc: '焼きたてのタイミングを逃さず勧める。‘keen’＝乗り気？' },
-      { phrase: '"staff favourite"', desc: '自分の推しを添えると、ただの売り込みより刺さる。' }
+      { phrase: '"Fresh batch... keen?"', desc: '焼きたてのタイミングを逃さず勧める。‘keen’ は「乗り気」「興味がある」の意味。' },
+      { phrase: '"staff favourite"', desc: '自分の推しを添えると、ただの売り込みより自然に伝わる。' }
     ]
   },
   'payment': {
@@ -514,7 +271,7 @@ rpDefs = {
     ],
     keyPoints: [
       { phrase: '"Heads up — ..."', desc: 'アレルギー等の重要共有の前置き。チーム連携で必須。' },
-      { phrase: '"Thanks heaps"', desc: '‘超ありがとう’ の豪口語。仲間への感謝が伝わる。' }
+      { phrase: '"Thanks heaps"', desc: '‘Thanks heaps’ は豪口語で「本当にありがとう」に近い表現。仲間への感謝が伝わる。' }
     ]
   }
 };
